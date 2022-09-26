@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/styleList.css">
-    <script src="https://kit.fontawesome.com/de2ba04b97.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Prompt:wght@500&display=swap" rel="stylesheet">
-    <title>Todo List</title>
+    <title>Document</title>
+</head>
+
 <body>
-    <div class="container">
-    <div class="perfil">
-        <div id="fecha"></div>
-        <h1>Hola, William Dos Santos</h1>
-        <span>Vamos a cumplir tus metas</span>
-    </div>
+    <main class="container">
+        <h1>Todo List</h1>
+        <h5>Nueva Tarea</h5>
+        <input id="input">
+        <button id="btn_add">Agregar</button>
 
-    <div class="agregar-tarea">
-        <input type="text" id="input" placeholder="Agregar una tarea">
-        <i id="enter" class="fas fa-plus-circle"></i>
-    </div>
-    <div class="seccion-tarea">
-        <h3>Estas son las tareas pendientes</h3>
-        <ul id="lista">
-            <!-- <li>
-                <i class="far fa-circle co"></i>
-                <p class="text line-through"> Hacer la tarea de español</p>
-                <i class="fas fa-trash de" data="eliminado" id="0"></i>
-            </li> -->
-        </ul>
-    </div>
+        <section>
+            <p>Total:<span id="tot_tareas"> 0 </span></p>
+            <p>Realizadas:<span id="tot_realizadas"> 0 </span></p>
+        </section>
 
+        <div class="encabezado">
+            <h4>ID</h4>
+            <h4>Tareas</h4>
+        </div>
+        <ul id="list"></ul>
+    </main>
 
-</div>
-    <script src="/assets/js/mainList.js"></script>
+    <script src="assets/js/mainList.js"></script>
 </body>
+
 </html>

@@ -1,114 +1,59 @@
-*{
-    box-sizing: border-box;
+body {
     margin: 0;
     padding: 0;
-}
-
-:root {
-  --white:#fafafb;
-  --purple:#9a67ea;
-  --blue-light:#04d4c3;
-  --blue-dark:#2a73c2;
-  --green:#2c7b90;
-}
-
-body {
-    background: linear-gradient(to bottom,var(--purple),var(--blue-light));
-    height: 100vh;
-    font-family: 'Prompt', sans-serif;
+    margin-left: 40%;
+    margin-top: 5%;
 }
 
 .container {
-    max-width: 80%;
-    width: 400px;
-    height: 600px;
-    margin: 0 auto;
+    width: 500px;
+    height: 350px;
+    background-color: rgb(235, 230, 230);
 }
 
-/*Perfil*/
-
-.perfil h1 {
-    color:var(--white);
+h1 {
+    margin: 20px;
+    border-bottom: 1px solid black;
 }
 
-.perfil span {
-    color:var(--white);
-    letter-spacing: 1px;
+h5 {
+    margin-left: 20px;
+    margin-bottom: 0;
 }
 
-#fecha {
-    color: var(--white);
-    padding: 50px 0 5px 0;
+p {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
-/*Agregar Tarea*/
-
-.agregar-tarea {
-    background-color: var(--white);
-    border-radius: 15px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 70px;
-    margin: 40px 0;
-}
-
-.agregar-tarea input {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
+#input {
+    width: 80%;
+    margin-left: 20px;
     border: none;
-    background-color: var(--white);
+    height: 20px;
+    border-radius: 2%;
 }
 
-.agregar-tarea i {
-    font-size: 50px;
-    color: var(--purple);
+#btn_add {
+    background-color: green;
+    color: white;
+    height: 25px;
+    border: none;
+    border-radius: 5%;
 }
 
-.agregar-tarea i:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+#list {
+    text-align: end;
+    border: 1 px solid black;
+    margin-right: 20px;
+    margin-top: 0;
+    list-style: none;
 }
 
-.agregar-tarea input::placeholder {
-    font-size: 1.1rem;
-    color: var(--purple);
-}
-
-/*Secion Tarea*/
-
-.seccion-tarea h3 {
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.seccion-tarea li {
+.encabezado {
     display: flex;
-    background: linear-gradient(to bottom,var(--blue-dark),var(--green));
-    border-radius: 15px;
-    padding: 10px;
-    align-items: center;
-    justify-content: space-between;
-    margin: 5px 0;
-    color: var(--white);
-}
+    margin-left: 50%;
+    justify-content: space-around;
 
-.seccion-tarea i {
-    font-size: 25px;
-}
-
-.seccion-tarea i:hover{
-    color: var(--blue-light);
-    cursor: pointer;
-}
-
-.seccion-tarea > ul p {
-    font-size: 1.2rem;
-}
-
-.line-through {
-    text-decoration: line-through;
-    color: var(--blue-light);
 }

@@ -1,110 +1,56 @@
-const fecha = document.querySelector('#fecha')
-const lista = document.querySelector('#lista')
-const input = document.querySelector('#input')
-const botonEnter = document.querySelector('#enter')
-const check = 'fa-check-circle'
-const uncheck = 'fa-circle'
-const lineThrough = 'line-through'
-let id
-let LIST
+ const input = document.querySelector("#input")
+  const btnAdd = document.querySelector("#btn_add")
+  const totalTareas = document.querySelector("#tot_tareas")
+  const totalRealizadas = document.querySelector("#tot_realizadas")
+  const listaTareas = document.querySelector("#list")
+  const checks = document.querySelector("#status")
+  
+  const todoList = []
+  
+    btnAdd.addEventListener("click", () => {
+    const nuevaTarea = input.value
 
-
-//Creacion de fecha
-
-const FECHA = new Date()
-fecha.innerHTML= FECHA.toLocaleDateString('es-MX',{weekday:'long',month:'short',day:'numeric'})
-
-
-//Funcion agregar tarea
-function agregarTarea (tarea,id,realizado,eliminado) {
-    if(eliminado){return}
-
-    const REALIZADO = realizado ?check :uncheck
-    const LINE = realizado ?lineThrough : ''
-
-    const elemento = `<li id="elemento">
-                        <i class="far ${REALIZADO}" data="realizado" id="${id}"></i>
-                        <p class="text ${LINE}">${tarea}</p>
-                        <i class="fas fa-trash de" data="eliminado" id="${id}"></i>
-                      </li>
-                      `
-    lista.insertAdjacentHTML("beforeend",elemento)
-}
-
-//Funcion tarea Realizada
-
-function tareaRealizada(element) {
-    element.classList.toggle(check)
-    element.classList.toggle(uncheck)
-    element.parentNode.querySelector('.text').classList.toggle(lineThrough)
-    LIST[element.id].realizado = LIST[element.id].realizado ?false :true
-}
-
-//Funcion tarea eliminada
-
-function tareaEliminada(element) {
-    element.parentNode.parentNode.removeChild(element.parentNode)
-    LIST[element.id].eliminado = true
-}
-
-botonEnter.addEventListener('click', ()=> {
-    const tarea = input.value
-    if(tarea) {
-        agregarTarea(tarea,id,false,false)
-        LIST.push({
-            nombre:tarea,
-            id:id,
-            realizado:false,
-            eliminado:false
-        })
-        localStorage.selItem('TODO',JSON.stringify(LIST))  
-        input.value=''
-        id++
-    }
-})
-
-document.addEventListener('keyup',function(event) {
-    if(event.key=='Enter'){
-        const tarea = input.value
-        if(tarea){
-            agregarTarea(tarea,id,false,false)
-            LIST.push({
-                nombre:tarea,
-                id:id,
-                realizado:false,
-                eliminado:false
-            })
-            localStorage.selItem('TODO',JSON.stringify(LIST))
-            input.value=''
-             id++
+    if (nuevaTarea === '') {
+          return
         }
-    }
-})
 
-lista.addEventListener('click',function(event){
-    const element = event.target
-    const elementData = element.attributes.data.value
-    if(elementData==='realizado'){
-        tareaRealizada(element)
-    }
-    else if (elementData==='eliminado'){
-        tareaEliminada(element)
-    }
-    localStorage.selItem('TODO',JSON.stringify(LIST))
-})
+    todoList.push({id: Date.now(), nombre: nuevaTarea})
+    input.value = ""
 
-let data = localStorage.getItem('TODO')
-if(data){
-    LIST = JSON.parse(data)
-    id = LIST.length
-    cargarLista(LIST)
-}else {
-    LIST = []
-    id = 0
+    renderTodolist()
+  })
+
+  function borrar(id) {
+    const index = todoList.findIndex((ele) => ele.id == id)
+    todoList.splice(index, 1)
+    renderTodolist()
+  }  
+
+  function renderTodolist() {
+    let html = ""
+    for (let tarea of todoList) {
+        html += `<li>${tarea.id} ${tarea.nombre} 
+        <input type="checkbox" id="status">
+        <button onclick="borrar(${tarea.id})"> X </button>
+        </li>`
+    }
+
+    listaTareas.innerHTML = html;
+
+    const canTareas = todoList.length
+    totalTareas.innerHTML = canTareas
+
+    const reaTareas = realizadas.length
+    totalRealizadas.innerHTML = reaTareas
+
+    }
+
+function realizadas(checks) {
+  checks.forEach((e) =>{
+    if(e.checked === true){
+      console.log(e.length)
+    }
+  })
+  
 }
-
-function cargarLista(DATA) {
-    DATA.forEach(function(i){
-        agregarTarea(i.nombre,i.id,i.realizado,i.eliminado)
-    })
-}
+ realizadas()
